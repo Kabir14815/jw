@@ -45,7 +45,7 @@ def seed():
         if db.banners.count_documents({}) == 0:
             banners = [
                 {"image_url": "/banners/banner-traditional-gold.jpg", "brand_label": "G", "brand_name": "TRADITIONAL GOLD", "presents": "THE HOUSE OF GARG", "collection_name": "Swipe to unveil incredible inspiration", "cta": "SHOP NOW", "cta_href": "/shop", "sort_order": 0},
-                {"image_url": "/banners/banner-jewelry-collection.webp", "brand_label": "G", "brand_name": "EXQUISITE & ELEGANT", "presents": "THE HOUSE OF GARG", "collection_name": "Discover our jewellery collection", "cta": "SHOP NOW", "cta_href": "/shop", "sort_order": 1},
+                {"image_url": "/banners/banner-jewelry-collection.png", "brand_label": "G", "brand_name": "EXQUISITE & ELEGANT", "presents": "THE HOUSE OF GARG", "collection_name": "Discover our jewellery collection", "cta": "SHOP NOW", "cta_href": "/shop", "sort_order": 1},
                 {"image_url": "/banners/banner-diamond-pendants.webp", "brand_label": "G", "brand_name": "DIAMOND PENDANTS", "presents": "THE HOUSE OF GARG", "collection_name": "Beautiful timeless pieces", "cta": "SHOP NOW", "cta_href": "/shop", "sort_order": 2},
             ]
             db.banners.insert_many(banners)
@@ -53,7 +53,7 @@ def seed():
     elif db.banners.count_documents({}) == 0:
         banners = [
             {"image_url": "/banners/banner-traditional-gold.jpg", "brand_label": "G", "brand_name": "TRADITIONAL GOLD", "presents": "THE HOUSE OF GARG", "collection_name": "Swipe to unveil incredible inspiration", "cta": "SHOP NOW", "cta_href": "/shop", "sort_order": 0},
-            {"image_url": "/banners/banner-jewelry-collection.webp", "brand_label": "G", "brand_name": "EXQUISITE & ELEGANT", "presents": "THE HOUSE OF GARG", "collection_name": "Discover our jewellery collection", "cta": "SHOP NOW", "cta_href": "/shop", "sort_order": 1},
+            {"image_url": "/banners/banner-jewelry-collection.png", "brand_label": "G", "brand_name": "EXQUISITE & ELEGANT", "presents": "THE HOUSE OF GARG", "collection_name": "Discover our jewellery collection", "cta": "SHOP NOW", "cta_href": "/shop", "sort_order": 1},
             {"image_url": "/banners/banner-diamond-pendants.webp", "brand_label": "G", "brand_name": "DIAMOND PENDANTS", "presents": "THE HOUSE OF GARG", "collection_name": "Beautiful timeless pieces", "cta": "SHOP NOW", "cta_href": "/shop", "sort_order": 2},
         ]
         db.banners.insert_many(banners)
