@@ -8,8 +8,11 @@ const AUTO_ADVANCE_MS = 5000
 
 const BUNDLED_BANNERS = {
   '/banners/banner-traditional-gold.png': customBanners[0],
+  '/banners/banner-traditional-gold.jpg': customBanners[0],
   '/banners/banner-jewelry-collection.png': customBanners[1],
+  '/banners/banner-jewelry-collection.webp': customBanners[1],
   '/banners/banner-diamond-pendants.png': customBanners[2],
+  '/banners/banner-diamond-pendants.webp': customBanners[2],
 }
 
 function resolveImageUrl(url) {

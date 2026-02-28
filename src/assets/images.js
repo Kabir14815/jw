@@ -7,9 +7,9 @@ export const placeholderImage = (w = 400, h = 400, seed = 'garg') =>
   `https://picsum.photos/seed/${seed}/${w}/${h}`
 
 // Hero banners – use ?url to preserve full quality (no inlining/processing)
-import bannerTraditionalGold from './banners/banner-traditional-gold.png?url'
-import bannerJewelryCollection from './banners/banner-jewelry-collection.png?url'
-import bannerDiamondPendants from './banners/banner-diamond-pendants.png?url'
+import bannerTraditionalGold from './banners/banner-traditional-gold.jpg?url'
+import bannerJewelryCollection from './banners/banner-jewelry-collection.webp?url'
+import bannerDiamondPendants from './banners/banner-diamond-pendants.webp?url'
 
 export const customBanners = [
   bannerTraditionalGold,   // Traditional gold necklace – Swipe to unveil INSPIRATION
