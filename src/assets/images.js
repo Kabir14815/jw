@@ -6,11 +6,15 @@ const U = (id, w = 800) =>
 export const placeholderImage = (w = 400, h = 400, seed = 'garg') =>
   `https://picsum.photos/seed/${seed}/${w}/${h}`
 
-// Hero banners – custom jewellery imagery (landing page)
+// Hero banners – use ?url to preserve full quality (no inlining/processing)
+import bannerTraditionalGold from './banners/banner-traditional-gold.png?url'
+import bannerJewelryCollection from './banners/banner-jewelry-collection.png?url'
+import bannerDiamondPendants from './banners/banner-diamond-pendants.png?url'
+
 export const customBanners = [
-  '/banners/banner-traditional-gold.png',    // Traditional gold necklace – Swipe to unveil INSPIRATION
-  '/banners/banner-jewelry-collection.png',  // Exquisite jewellery collection – Discover our collection
-  '/banners/banner-diamond-pendants.png',    // Beautiful diamond pendants – View range
+  bannerTraditionalGold,   // Traditional gold necklace – Swipe to unveil INSPIRATION
+  bannerJewelryCollection, // Exquisite jewellery collection – Discover our collection
+  bannerDiamondPendants,   // Beautiful diamond pendants – View range
 ]
 
 // Hero banners (large 1920px) – custom first, then Unsplash fallbacks

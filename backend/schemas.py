@@ -99,3 +99,37 @@ class OrderOut(BaseModel):
     total: float
     created_at: str
     items: list[OrderItemOut] = []
+
+
+class BannerOut(BaseModel):
+    id: str
+    image_url: str
+    brand_label: str = "G"
+    brand_name: str
+    presents: str
+    collection_name: str
+    cta: str
+    cta_href: str
+    sort_order: int = 0
+
+
+class BannerCreate(BaseModel):
+    image_url: str
+    brand_label: str = "G"
+    brand_name: str
+    presents: str = ""
+    collection_name: str = ""
+    cta: str = "SHOP NOW"
+    cta_href: str = "/shop"
+    sort_order: int = 0
+
+
+class BannerUpdate(BaseModel):
+    image_url: str | None = None
+    brand_label: str | None = None
+    brand_name: str | None = None
+    presents: str | None = None
+    collection_name: str | None = None
+    cta: str | None = None
+    cta_href: str | None = None
+    sort_order: int | None = None

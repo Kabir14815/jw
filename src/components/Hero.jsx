@@ -1,18 +1,61 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
+import { bannersApi } from '../api/client.js'
 import { heroBanners } from '../data/landingBanners.js'
+import { customBanners } from '../assets/images.js'
 
 const AUTO_ADVANCE_MS = 5000
-const SLIDES = Array.isArray(heroBanners) && heroBanners.length > 0 ? heroBanners : []
+
+const BUNDLED_BANNERS = {
+  '/banners/banner-traditional-gold.png': customBanners[0],
+  '/banners/banner-jewelry-collection.png': customBanners[1],
+  '/banners/banner-diamond-pendants.png': customBanners[2],
+}
+
+function resolveImageUrl(url) {
+  if (!url) return ''
+  if (url.startsWith('http')) return url
+  const key = url.startsWith('/') ? url : '/' + url
+  const bundled = BUNDLED_BANNERS[key]
+  if (bundled) return bundled
+  const base = typeof window !== 'undefined' ? window.location.origin : ''
+  return base + (url.startsWith('/') ? url : '/' + url)
+}
+
+function mapBanner(b) {
+  return {
+    image: resolveImageUrl(b.image_url),
+    brandLabel: b.brand_label ?? 'G',
+    brandName: b.brand_name ?? '',
+    presents: b.presents ?? '',
+    collectionName: b.collection_name ?? '',
+    cta: b.cta ?? 'SHOP NOW',
+    ctaHref: b.cta_href ?? '/shop',
+  }
+}
+
+const STATIC_SLIDES = Array.isArray(heroBanners) && heroBanners.length > 0 ? heroBanners : []
 
 export default function Hero() {
+  const [slides, setSlides] = useState(STATIC_SLIDES)
   const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    bannersApi.list()
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          const mapped = data.map(mapBanner).filter((s) => s.image)
+          if (mapped.length > 0) setSlides(mapped)
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   const slideWidthVw = 85
   const offsetVw = (100 - slideWidthVw) / 2
-  const totalSlides = SLIDES.length
+  const totalSlides = slides.length
   const safeIndex = totalSlides > 0 ? Math.min(activeIndex, totalSlides - 1) : 0
-  const slide = SLIDES[safeIndex]
+  const slide = slides[safeIndex]
 
   const goTo = useCallback((index) => {
     if (totalSlides === 0) return
@@ -45,7 +88,7 @@ export default function Hero() {
             transform: `translateX(calc(${offsetVw}vw - ${safeIndex * slideWidthVw}vw))`,
           }}
         >
-          {SLIDES.map((s, i) => (
+          {slides.map((s, i) => (
             <div
               key={i}
               className={`hero-slide ${i === safeIndex ? 'active' : ''}`}
@@ -55,6 +98,8 @@ export default function Hero() {
                 className="hero-bg"
                 style={{
                   backgroundImage: s.image ? `url(${s.image})` : undefined,
+                  backgroundSize: s.image ? 'cover' : undefined,
+                  backgroundPosition: s.image ? 'center' : undefined,
                 }}
               />
             </div>
@@ -90,7 +135,7 @@ export default function Hero() {
             )}
           </div>
           <div className="hero-dots-wrap">
-            {SLIDES.map((_, i) => (
+            {slides.map((_, i) => (
               <button
                 key={i}
                 type="button"

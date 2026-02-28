@@ -26,6 +26,7 @@ export default function AdminLayout() {
           <NavLink to="/admin" className="admin-nav__link" end>Dashboard</NavLink>
           <NavLink to="/admin/orders" className="admin-nav__link">Orders</NavLink>
           <NavLink to="/admin/products" className="admin-nav__link">Products</NavLink>
+          <NavLink to="/admin/banners" className="admin-nav__link">Banners</NavLink>
           <Link to="/shop" className="admin-nav__link">View shop</Link>
           <Link to="/" className="admin-nav__link">View store</Link>
         </nav>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { useDocumentHead } from '../utils/useDocumentHead.js'
 import { useAuth } from '../context/AuthContext.jsx'
 
@@ -35,6 +35,9 @@ export default function Login() {
 
   return (
     <div className="login-page">
+      <Link to="/" className="login-close" aria-label="Close / Go back">
+        ×
+      </Link>
       <div className="login-card">
         <h1 className="login-title">The House of Garg</h1>
         <p className="login-sub">Sign in to continue</p>

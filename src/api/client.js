@@ -70,4 +70,11 @@ export const settingsApi = {
   setGoldRate: (value) => api('PUT', '/settings/gold-rate', { value: Number(value) }),
 }
 
+export const bannersApi = {
+  list: () => api('GET', '/banners'),
+  create: (data) => api('POST', '/banners', data),
+  update: (id, data) => api('PATCH', `/banners/${id}`, data),
+  delete: (id) => api('DELETE', `/banners/${id}`),
+}
+
 export { API_BASE, getToken }

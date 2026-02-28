@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext.jsx'
-import { productsApi, ordersApi } from '../../api/client.js'
+import { productsApi, ordersApi, bannersApi } from '../../api/client.js'
 
 export default function AdminDashboard() {
   const { user } = useAuth()
   const [productCount, setProductCount] = useState(0)
   const [orderCount, setOrderCount] = useState(0)
+  const [bannerCount, setBannerCount] = useState(0)
 
   useEffect(() => {
     productsApi.list().then((r) => setProductCount(Array.isArray(r) ? r.length : 0)).catch(() => setProductCount(0))
     ordersApi.adminOrders().then((r) => setOrderCount(Array.isArray(r) ? r.length : 0)).catch(() => setOrderCount(0))
+    bannersApi.list().then((r) => setBannerCount(Array.isArray(r) ? r.length : 0)).catch(() => setBannerCount(0))
   }, [])
 
   return (
@@ -27,6 +29,11 @@ export default function AdminDashboard() {
           <h3>Products</h3>
           <p className="admin-card__value">{productCount}</p>
           <p className="admin-card__label">Manage catalog</p>
+        </Link>
+        <Link to="/admin/banners" className="admin-card admin-card--link">
+          <h3>Banners</h3>
+          <p className="admin-card__value">{bannerCount}</p>
+          <p className="admin-card__label">Manage hero carousel</p>
         </Link>
         <div className="admin-card">
           <h3>Customers</h3>

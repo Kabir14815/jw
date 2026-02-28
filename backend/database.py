@@ -14,7 +14,8 @@ def get_client():
 def get_db():
     client = get_client()
     # URI contains database name (e.g. rr_enterprise)
-    return client.get_default_database() or client.get_database("rr_enterprise")
+    db = client.get_default_database()
+    return db if db is not None else client.get_database("rr_enterprise")
 
 
 def init_db():
@@ -25,3 +26,4 @@ def init_db():
     db.cart_items.create_index([("user_id", 1), ("product_id", 1)])
     db.orders.create_index("user_id")
     db.order_items.create_index("order_id")
+    db.banners.create_index("sort_order")

@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import init_db
-from routers import auth, categories, products, cart, orders, settings
+from routers import auth, categories, products, cart, orders, settings, banners
 
 
 @asynccontextmanager
@@ -38,6 +38,7 @@ app.include_router(products.router)
 app.include_router(cart.router)
 app.include_router(orders.router)
 app.include_router(settings.router)
+app.include_router(banners.router)
 
 
 @app.get("/health")

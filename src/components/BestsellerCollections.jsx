@@ -11,13 +11,8 @@ export default function BestsellerCollections() {
         ))}
       </div>
       <div className="bestseller-divider">
-        <svg className="bestseller-wave" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden>
-          <path
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.2"
-            d="M0 8 Q40 2, 80 8 T160 8 T240 8 T320 8"
-          />
+        <svg className="bestseller-divider-line" viewBox="0 0 320 2" preserveAspectRatio="none" aria-hidden>
+          <line x1="0" y1="1" x2="320" y2="1" stroke="currentColor" strokeWidth="2" />
         </svg>
         <span className="bestseller-symbol" aria-hidden>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
